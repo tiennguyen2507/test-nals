@@ -22,9 +22,6 @@ const CreateOrEditBlogPage: FC<TCreateOrEditBlogPage> = ({ showModal, onCloseMod
   const navigate = useNavigate()
 
   const renderImg = (event: any) => {
-    const file = event.target.files[0]
-
-    file.preview = URL.createObjectURL(file)
     setImgEdit(URL.createObjectURL(event.target.files[0]) as any)
   }
 
@@ -37,14 +34,12 @@ const CreateOrEditBlogPage: FC<TCreateOrEditBlogPage> = ({ showModal, onCloseMod
     formData.append('blog[title]', data.title)
     if (!param.id) {
       await blogsService.create(formData)
-      reset({})
       closeModal()
       onRefreshList()
     } else {
       await blogsService.edit(param.id as string, formData)
-      reset({})
-      onRefreshList()
       closeModal()
+      onRefreshList()
     }
     setLoading(false)
   }
@@ -54,7 +49,7 @@ const CreateOrEditBlogPage: FC<TCreateOrEditBlogPage> = ({ showModal, onCloseMod
       const { data: { title, content, image: { url } } } = await blogsService.getById(id)
       setImgEdit(url)
       reset({
-        title, content, image: url
+        title, content
       })
     } catch (error) {
       closeModal()
@@ -65,10 +60,10 @@ const CreateOrEditBlogPage: FC<TCreateOrEditBlogPage> = ({ showModal, onCloseMod
   }
 
   const closeModal = (): void => {
-    onCloseModal()
     reset({})
-    navigate('/blogs')
     setImgEdit(undefined)
+    onCloseModal()
+    navigate('/blogs')
   }
 
   useEffect(() => {

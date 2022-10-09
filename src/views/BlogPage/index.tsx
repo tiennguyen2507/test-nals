@@ -113,7 +113,7 @@ const BlogsPage: FC = () => {
           <div className='p-4 border rounded bg-white min-h-[500px]'>
             {listBlog.length !== 0 ? (<ul className="list-unstyled">
               {listBlog.length !== 0 && listBlog.map(({ title, id, content, image: { url } }) => {
-                return (<li className="media border rounded p-2 mb-3 cursor-pointer max" key={id} >
+                return (<li className="media border rounded p-2 mb-3 cursor-pointer hover:bg-blue-50" key={id} >
                   <img src={url || imgError} className="mr-3 w-20" alt="img" onClick={() => navigate(`/blogs/detail/${id}`)} />
                   <div className="media-body" onClick={() => navigate(`/blogs/detail/${id}`)}>
                     <h5 className="mt-0 mb-1  font-bold ">{title}</h5>
