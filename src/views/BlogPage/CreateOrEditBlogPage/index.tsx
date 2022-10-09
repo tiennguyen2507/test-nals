@@ -3,6 +3,7 @@ import blogsService from "@/services/blogsService"
 import { FC, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { useNavigate, useParams } from "react-router-dom"
+import imageError from '@/assets/default.png'
 
 
 type TCreateOrEditBlogPage = {
@@ -81,7 +82,7 @@ const CreateOrEditBlogPage: FC<TCreateOrEditBlogPage> = ({ showModal, onCloseMod
               {...register('title', { required: true })} />
             {errors.title?.type === 'required' && <p className="text-red-600">Title is required</p>}
           </div>
-          {imgEdit && <img src={imgEdit} alt="img" className="pt-2" />}
+          {<img src={imgEdit || imageError} alt="img" className="pt-2" />}
           <div className='text-base'>
             <label className='font-medium' >Image:</label>
             <div className='p-2 rounded-sm border'>

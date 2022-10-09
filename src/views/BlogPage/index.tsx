@@ -113,18 +113,23 @@ const BlogsPage: FC = () => {
           <div className='p-4 border rounded bg-white min-h-[500px]'>
             {listBlog.length !== 0 ? (<ul className="list-unstyled">
               {listBlog.length !== 0 && listBlog.map(({ title, id, content, image: { url } }) => {
-                return (<li className="media border rounded p-2 mb-3 cursor-pointer hover:bg-blue-50" key={id} >
-                  <img src={url || imgError} className="mr-3 w-20" alt="img" onClick={() => navigate(`/blogs/detail/${id}`)} />
-                  <div className="media-body" onClick={() => navigate(`/blogs/detail/${id}`)}>
-                    <h5 className="mt-0 mb-1  font-bold ">{title}</h5>
-                    <div className="media-body max-h-20  overflow-hidden" dangerouslySetInnerHTML={{ __html: content }}>
-
-                    </div>
-                  </div>
-                  <div className='p-2 border rounded cursor-pointer' onClick={() => showEdit(id)} >
-                    <AiFillEdit className='text-xl' />
-                  </div>
-                </li>)
+                return (
+                  <>
+                    <li className="media border rounded p-2 mb-3 cursor-pointer hover:bg-blue-50 flex justify-between items-center" key={id} >
+                      <div className='media overflow-hidden '>
+                        <img src={url || imgError} className="mr-3 w-20" alt="img" onClick={() => navigate(`/blogs/detail/${id}`)} />
+                        <div className="overflow-hidden " onClick={() => navigate(`/blogs/detail/${id}`)}>
+                          <h5 className="mt-0 mb-1  font-bold text-ellipsis overflow-hidden  whitespace-nowrap">{title}</h5>
+                          <div className="media-body max-h-20  overflow-hidden whitespace-normal text-ellipsis" dangerouslySetInnerHTML={{ __html: content }}>
+                          </div>
+                        </div>
+                      </div>
+                      <div className='p-2 border rounded cursor-pointer' onClick={() => showEdit(id)} >
+                        <AiFillEdit className='text-xl' />
+                      </div>
+                    </li>
+                  </>
+                )
               })}
             </ul>) : (<div className='w-full h-full text-center text-xl font-semibold'>No blog!</div>)}
           </div>

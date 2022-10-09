@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import moment from 'moment'
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import GLoading from '@/components/GLoading';
+import imageError from '@/assets/default.png'
 
 const DetailBlogPage: FC = () => {
   const [loading, setLoading] = useState(false)
@@ -49,11 +50,11 @@ const DetailBlogPage: FC = () => {
             <div>
               <div className='flex justify-between items-center pb-2'>
                 <p className='font-bold'>title:</p>
-                <p className='font-bold text-xl'>{blogDetail.title}</p>
+                <p className='font-bold text-xl'>{blogDetail.title || <div className='bg-gray-400  w-32 h-5 rounded-sm '></div>}</p>
               </div>
               <div className='pb-2'>
                 <p className='font-bold'>image:</p>
-                <img src={blogDetail.image} alt="" />
+                <img src={blogDetail.image || imageError} alt="" />
               </div>
               <div className='pb-2'>
                 <p className='font-bold'>content:</p>
@@ -61,11 +62,11 @@ const DetailBlogPage: FC = () => {
               </div>
               <div className='flex justify-between items-center pb-2'>
                 <p className='font-bold'>Day Create:</p>
-                <p>{blogDetail.dayCreate} </p>
+                <p>{blogDetail.dayCreate || <div className='bg-gray-400  w-20 h-5 rounded-sm '></div>} </p>
               </div>
               <div className='flex justify-between items-center pb-2'>
                 <p className='font-bold'>Day update:</p>
-                <p>{blogDetail.dayUpdate} </p>
+                <p>{blogDetail.dayUpdate || <div className='bg-gray-400  w-20 h-5 rounded-sm '></div>} </p>
               </div>
             </div>
           </div>
