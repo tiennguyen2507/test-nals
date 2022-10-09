@@ -1,0 +1,18 @@
+{
+  "custom-console-log": {
+    "scope": "javascript, typescript",
+    "prefix": "log",
+    "body": [
+      "console.log($1)",
+    ],
+    "description": "console log snippet"
+  },
+  "custom-arrow-function": {
+    "scope": "javascript, typescript",
+    "prefix": "arf",
+    "body": [
+      "($1) => {$2}",
+    ],
+    "description": "arrow function snippet"
+  }
+}
