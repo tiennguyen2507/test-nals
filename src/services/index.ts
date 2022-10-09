@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { getToken } from '@/utils/tokenStorage';
 
 const URL = 'https://api-placeholder.herokuapp.com';
 
@@ -10,15 +9,6 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
-    const token = getToken();
-
-    if (token) {
-      config.headers = {
-        ...config.headers,
-        accessToken: token,
-      };
-    }
-
     return config;
   },
   (err) => {

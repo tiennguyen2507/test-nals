@@ -1,5 +1,5 @@
 {
-  "name": "hrms-frontend",
+  "name": "test-nals",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -14,10 +14,8 @@
     "@reduxjs/toolkit": "^1.8.5",
     "@types/react-redux": "^7.1.24",
     "axios": "^0.27.2",
-    "dotenv": "^16.0.2",
     "eslint-config-standard": "^17.0.0",
     "form-data": "^4.0.0",
-    "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
